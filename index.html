@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>随机选择器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="result"></div>
+
+<script>
+    // 这里是你的选项
+    var names = ["连线点名：","索尼点名：","顺位高低：","眼睛位置：","分摊点名：","男人位置："];
+    var options = [
+        ["中线", "远线"],
+        ["x", "●", "▲", "■"],
+        ["高顺位", "低顺位"],
+        ["A", "1", "B", "2", "C", "3", "D", "4"],
+        ["左1", "左2", "左3", "左4", "右1", "右2", "右3", "右4"],
+        ["A", "1", "B", "2", "C", "3", "D", "4"]
+    ];
+
+    // 生成随机结果
+    var result = options.map(function(option) {
+        return option[Math.floor(Math.random() * option.length)];
+    });
+
+    // 显示结果
+    var resultDiv = document.getElementById('result');
+    var i = 0;
+    result.forEach(function(res) {
+        var div = document.createElement('div');
+        div.textContent = names[i++]+res;
+        div.className = 'result';
+        resultDiv.appendChild(div);
+    });
+</script>
+</body>
+</html>

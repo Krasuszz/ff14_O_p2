@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>随机选择器</title>
+    <meta charset="UTF-8">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +20,11 @@
             color: #333;
             margin-bottom: 10px;
         }
+        @media screen and (max-width: 600px) {
+            .result {
+                font-size: 2.5em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -35,21 +41,26 @@
         ["左1", "左2", "左3", "左4", "右1", "右2", "右3", "右4"],
         ["A", "1", "B", "2", "C", "3", "D", "4"]
     ];
-
-    // 生成随机结果
-    var result = options.map(function(option) {
-        return option[Math.floor(Math.random() * option.length)];
-    });
-
-    // 显示结果
+    let result;
     var resultDiv = document.getElementById('result');
-    var i = 0;
-    result.forEach(function(res) {
+    for (var i = 0; i <= 5; i++) {
+        if (i === 4)
+        {
+            var copy = options[i].slice(); // 创建副本数组
+            var randomIndex1 = Math.floor(Math.random() * copy.length);
+            var item1 = copy.splice(randomIndex1, 1)[0]; // 移除并返回随机索引处的元素
+            var randomIndex2 = Math.floor(Math.random() * copy.length);
+            var item2 = copy.splice(randomIndex2, 1)[0]; // 移除并返回随机索引处的元素
+            result = [item1, item2].join(' '); // 组合成一个字符串
+        }
+        else {
+            result = options[i][Math.floor(Math.random() * options[i].length)];
+        }
         var div = document.createElement('div');
-        div.textContent = names[i++]+res;
+        div.textContent = names[i] + result;
         div.className = 'result';
         resultDiv.appendChild(div);
-    });
+    }
 </script>
 </body>
 </html>

@@ -94,7 +94,7 @@
                 var item1 = copy.splice(randomIndex1, 1)[0]; // 移除并返回随机索引处的元素
                 var randomIndex2 = Math.floor(Math.random() * copy.length);
                 var item2 = copy.splice(randomIndex2, 1)[0]; // 移除并返回随机索引处的元素
-                result = [item1, item2].join(''); // 组合成一个字符串
+                result = [item1, item2].join(' '); // 组合成一个字符串
             } else {
                 result = options[i][Math.floor(Math.random() * options[i].length)];
             }
